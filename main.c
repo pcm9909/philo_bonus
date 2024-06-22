@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 19:17:07 by chunpark          #+#    #+#             */
-/*   Updated: 2024/06/23 03:31:24 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/06/23 08:09:07 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	main(int argc, char **argv)
 	int status;
 	int i;
 
-	i = 0;
-
 	if (argc == 5 || argc == 6)
 	{
 		validate_input(argv);
@@ -40,6 +38,7 @@ int	main(int argc, char **argv)
 		print_error(INPUT_ERR_3);
 	}
 	wait(&status);
+	i = 0;
 	while(i < resource.num_philos)
 	{
 		kill(resource.philos[i].pid, SIGKILL);

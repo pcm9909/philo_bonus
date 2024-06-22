@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 20:23:11 by chunpark          #+#    #+#             */
-/*   Updated: 2024/06/22 20:28:16 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/06/23 03:25:50 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	check_finish(t_philo *philo, int status)
 	if (status == 2)
 	{
 		sem_post(philo->resource->cmp_finish);
-		kill(0, SIGINT);
+		exit(0);
 	}
 	if (philo->resource->num_philos % 2 == 1)
 	{
 		if (status == 1 && philo->id == philo->resource->num_philos - 1)
 		{
 			sem_post(philo->resource->cmp_finish);
-			kill(0, SIGINT);
+			exit(0);
 		}
 		sem_post(philo->resource->cmp_finish);
 	}
@@ -34,7 +34,7 @@ int	check_finish(t_philo *philo, int status)
 		if (status == 1 && philo->id == philo->resource->num_philos)
 		{
 			sem_post(philo->resource->cmp_finish);
-			kill(0, SIGINT);
+			exit(0);
 		}
 		sem_post(philo->resource->cmp_finish);
 	}

@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 19:17:07 by chunpark          #+#    #+#             */
-/*   Updated: 2024/06/22 20:25:25 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/06/23 03:31:24 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	free_resource(t_resource *resource)
 int	main(int argc, char **argv)
 {
 	t_resource	resource;
+	int status;
+	int i;
+
+	i = 0;
 
 	if (argc == 5 || argc == 6)
 	{
@@ -35,5 +39,11 @@ int	main(int argc, char **argv)
 	{
 		print_error(INPUT_ERR_3);
 	}
-	wait(NULL);
+	wait(&status);
+	while(i < resource.num_philos)
+	{
+		kill(resource.philos[i].pid, SIGKILL);
+		i++;
+	}		
+	free_resource(&resource);
 }

@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:15:13 by chunpark          #+#    #+#             */
-/*   Updated: 2024/06/20 03:25:09 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/06/22 19:18:37 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	alloc_resource(t_resource *resource)
 	{
 		resource->philos[i].id = i + 1;
 		resource->philos[i].cnt_eat = 0;
-		resource->philos[i].time_last_eat = resource->time_stamp;
+		resource->philos[i].time_last_eat = get_time();
 		resource->philos[i].resource = resource;
 		i++;
 	}
@@ -61,11 +61,11 @@ static sem_t	*init_sem(char *name, int count)
 
 	sem_unlink(name);
 	sem = sem_open(name, O_CREAT, 0644, count);
-	if (errno == SEM_FAILED)
+	if (!sem)
 	{
 		print_error(SEM_OPEN_ERR);
 	}
-	return sem;
+	return (sem);
 }
 
 static void	open_sem(t_resource *resource)

@@ -1,4 +1,6 @@
 *.o
 philo_bonus
 .vscode
-
+path/
+*.swp
+.DS_Store

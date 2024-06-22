@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:15:08 by chunpark          #+#    #+#             */
-/*   Updated: 2024/06/20 18:29:13 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/06/22 20:18:54 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_resource
 	sem_t			*forks;
 	sem_t			*write;
 	sem_t			*eat;
-	sem_t 			*cmp_finish;
+	sem_t			*cmp_finish;
 }			t_resource;
 
 //utils.c
@@ -89,8 +89,12 @@ void	validate_input(char **argv);
 
 void	preprocessing(int argc, char **argv, t_resource *resource);
 
-void 	fork_philos(t_resource *resource);
+void	fork_philos(t_resource *resource);
 
-int check_finish(t_philo *philo, int status);
+int		check_finish(t_philo *philo, int status);
+
+void	*checker(void *philos);
+
+void	routine(t_philo *philo);
 
 #endif

@@ -6,12 +6,12 @@
 #    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:26:42 by chunpark          #+#    #+#              #
-#    Updated: 2024/06/28 18:31:53 by chunpark         ###   ########.fr        #
+#    Updated: 2024/07/01 13:34:36 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 NAME = philo_bonus
 SRCS =	check.c \

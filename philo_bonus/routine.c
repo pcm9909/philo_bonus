@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 20:18:47 by chunpark          #+#    #+#             */
-/*   Updated: 2024/06/28 17:55:08 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/07/01 13:33:22 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,13 @@ static void	ft_eat(t_philo *philo)
 {
 	sem_wait(philo->resource->eat);
 	print_status(philo, EAT);
+	sem_wait(philo->resource->time);
 	philo->time_last_eat = get_time();
+	sem_post(philo->resource->time);
 	usleep(philo->resource->time_eat * 1000);
+	sem_wait(philo->resource->count);
 	philo->cnt_eat++;
+	sem_post(philo->resource->count);
 	sem_post(philo->resource->eat);
 }
 

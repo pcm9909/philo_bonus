@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:15:13 by chunpark          #+#    #+#             */
-/*   Updated: 2024/06/27 20:41:37 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/07/01 13:14:58 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static void	open_sem(t_resource *resource)
 	resource->forks = init_sem("/forks", resource->num_philos);
 	resource->eat = init_sem("/eat", resource->num_philos);
 	resource->cmp_finish = init_sem("/cmp_finish", 1);
+	resource->time = init_sem("/time", 1);
+	resource->count = init_sem("/count", 1);
 }
 
 void	preprocessing(int argc, char **argv, t_resource *resource)
